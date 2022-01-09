@@ -52,7 +52,7 @@ export default function Signup(props) {
                 </div>
                 <div>
                     <form action="?" method="POST">
-                        <div class="g-recaptcha" data-sitekey="your_site_key"></div>
+                        <div class="g-recaptcha" data-sitekey="6LeScP4dAAAAAGu0lLoVo50ivpG3gPysS5_rY6pA"></div>
                         <br/>
                         <input type="submit" value="Submit"/>
                     </form>
