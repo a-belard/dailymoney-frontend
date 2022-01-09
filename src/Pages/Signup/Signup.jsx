@@ -5,9 +5,6 @@ import classes from "./Signup.module.scss"
 
 export default function Signup(props) {
     let params = useParams()
-    function check(token) {
-        document.getElementById("demo-form").submit();
-      }
     const [referer, setreferer] = useState("")
     useEffect(
         () => {
