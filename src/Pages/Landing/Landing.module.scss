@@ -1,0 +1,64 @@
+.landing {
+    width: 100%;
+    overflow: hidden;
+    height: 100vh;
+    background: linear-gradient(#FFFFFF,#becfff);
+    padding: 0 20px;
+    div:first-child {
+        width: 80%;
+        margin: 40px auto 10px;
+        img {
+            width: 100%;
+            animation: bounce 2s ease-in infinite alternate;
+        }
+        @keyframes bounce {
+            from {
+                transform: translateY(0px);
+            }
+            to {
+                transform: translateY(35px);
+            }
+        }
+    }
+    h2 {
+        text-align: center;
+        margin-top: 40px;
+        color: blue;
+        font-weight: 900;
+    }
+    h4 {
+        margin: 20px 0;
+    }
+    p {
+        font-weight: 500;
+        font-size: .9em;
+        opacity: .8;
+    }
+    div:nth-of-type(2) {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        
+        hr {
+            width: 42%;
+            opacity: .7;
+        }
+    }
+    a {
+        text-decoration: none;
+        padding: 20px;
+        width: 100%;
+        background-color: rgb(0, 0, 255);
+        display: block;
+        color: white;
+        font-weight: 600;
+        text-align: center;
+        border-radius: 7px;
+        margin: 15px 0;
+
+        &:last-of-type {
+            background-color: dodgerblue;
+        }
+    }
+}
