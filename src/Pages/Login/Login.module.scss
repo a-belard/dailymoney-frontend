@@ -1,35 +1,60 @@
-.signup {
+.login {
+    // background: linear-gradient(#FFFFFF,#becfff);
+    min-height: 100vh;
+    width: 100%;
     padding: 20px;
+
+    >div:first-child {
+        width: 80%;
+        margin: 30px auto 10px;
+        img {
+            width: 100%;
+            animation: bounce 2s ease-in infinite alternate;
+        }
+        @keyframes bounce {
+            from {
+                transform: translateY(0px);
+            }
+            to {
+                transform: translateY(35px);
+            }
+        }
+    }
+
     h3 {
         text-align: center;
         margin: 10px 0;
         font-weight: 900;
 
         &:first-of-type {
-            margin-top: 30px;
+            margin-top: 40px;
+            font-size: 1.4em;
             color: blue;
         }
     }
 
     form {
-        margin-top: 20px;
-
+        width: 100%;
         >div {
             display: flex;
             margin: 20px 0;
             align-items: flex-start;
             flex-direction: column;
             position: relative;
+            width: 100%;
+
+            &:last-child {
+                flex-direction: row;
+                justify-content: space-between;
+                font-size: .9em;
+                margin-top: 5px;
+            }
 
             div {
                 display: flex;
                 align-items: center;
-                justify-content: space-between;
+                justify-content: flex-start;
                 width: 100%;
-
-                div{
-                    justify-content: initial;
-                    width: 30%;
 
                     input {
                         margin-right: 10px;
@@ -38,7 +63,6 @@
                     label {
                         margin-bottom: 0;
                     }
-                }
             }
 
             label {
@@ -56,8 +80,8 @@
                 font-size: 1.05em;
                 padding: 0 20px;
 
-                &[type=radio] {
-                    width: initial;
+                &[type=checkbox] {
+                    width: 20px;
                 }
 
                 &:focus {
@@ -72,11 +96,6 @@
                 &[type=tel] {
                     padding-left: 100px;
                 }
-            }
-
-            span {
-                font-size: .8em;
-                opacity: .8;
             }
 
             section {
@@ -104,4 +123,5 @@
             }
         }
     }
+
 }

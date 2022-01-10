@@ -1,9 +1,10 @@
 import React from 'react'
-import Image from "../../assets/dailymoney.png"
 import classes from "./Logo.module.scss"
+import jwt_decode from "jwt-decode"
 
 export default function Logo() {
+    let username = jwt_decode(localStorage.token).username
     return (
-        <img src={Image} alt="" className={classes.logo}/>
+        <h5 className={classes.username}><i className='fa fa-user'></i> {username}</h5>
     )
 }

@@ -1,12 +1,14 @@
 .landing {
     width: 100%;
     overflow: hidden;
-    height: 100vh;
+    min-height: 100vh;
     background: linear-gradient(#FFFFFF,#becfff);
     padding: 0 20px;
+
     div:first-child {
         width: 80%;
         margin: 40px auto 10px;
+        
         img {
             width: 100%;
             animation: bounce 2s ease-in infinite alternate;

@@ -1,6 +1,15 @@
-img.logo {
+.username {
     position: absolute;
-    width: 70px;
-    right: 0px;
-    top: 0px;
+    right: 20px;
+    top: 30px;
+    font-weight: 700;
+    font-size: 1em;
+    font-weight: 600;
+    background-color: rgba(13, 37, 255, 0.15);
+    padding: 10px 20px;
+    border-radius: 10px;
+    
+    i {
+        margin-right: 5px;
+    }
 }
