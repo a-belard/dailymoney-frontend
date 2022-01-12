@@ -1,9 +1,9 @@
 .account {
     >div:first-of-type {
-        margin-top: 20px;
         display: flex;
-        margin-left: 20px;
+        margin:20px;
         align-items: center;
+        position: relative;
 
         div {
             display: flex;
@@ -16,6 +16,18 @@
             margin-right: 10px;
             border-radius: 10px;
             background-color: rgba(13, 37, 255, 0.15);
+
+            &:last-of-type {
+                align-self: flex-end;
+                color: white;
+                height: 40px;
+                font-size: 1em;
+                width: 40px;
+                background-color: rgb(255, 123, 0);
+                position: absolute;
+                right: 0;
+                margin-right: 0;
+            }
         }
     }
 }

@@ -8,8 +8,12 @@
     background-color: rgba(13, 37, 255, 0.15);
     padding: 10px 20px;
     border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     
     i {
         margin-right: 5px;
+        margin-top: -4px;
     }
 }

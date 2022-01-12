@@ -18,4 +18,112 @@
             background-color: rgba(13, 37, 255, 0.15);
         }
     }
+
+    >div:nth-of-type(2) {
+        display: flex;
+        margin: 25px 20px 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        white-space: nowrap;
+
+        button {
+            width: 49%;
+            height: 40px;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: .85em;
+            text-transform: uppercase;
+            border: none;
+            background-color: rgba(0, 128, 255, 0.26);
+
+            &.active{
+                background-color: dodgerblue;
+                color: white;
+            }
+        }
+    }
+
+    >div:nth-child(n+4).notifs{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 12px 20px;
+        padding: 15px;
+        border-radius: 10px;
+
+        &:last-of-type {
+            margin-bottom: 50px;
+        }
+
+        &.green {
+            background-color: rgba(6, 150, 20, 0.15);
+            p {
+                color: #069614;
+            }
+        }
+
+        &.blue {
+            background-color: rgba(13, 37, 255, 0.15);
+            p {
+                color: #0C23F5;
+            }
+        }
+
+        &.dodgerblue {
+            background-color: rgba(83, 140, 255, 0.15);
+            p {
+                color: #2050FB;
+            }
+        }
+
+        &.indigo {
+            background-color: rgba(145, 0, 198, 0.15);
+            p {
+                color: #9200C6;
+            }
+        }
+
+        p {
+            width: 74%;
+            font-size: .95em;
+            font-weight: 600;
+            span {
+                font-size: .85em;
+                margin-top: 7px;
+                display: block;
+                font-weight: initial;
+                color: initial;
+                opacity: .6;
+                font-weight: 500;
+            }
+        }
+
+        >div {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            width: 26%;
+            margin: 5px;
+
+            button {
+                border: none;
+                border-radius: 5px;
+                font-size: .85em;
+                margin: 0 5px;
+                height: 35px;
+                width: 35px;
+
+                &:first-of-type {
+                    color: #008d0e;
+                    background-color: rgba(6, 150, 20, 0.26);
+                }
+
+                &:last-of-type {
+                    color: #DB0505;
+                    background-color: rgba(231, 64, 64, 0.26);
+                }
+            }
+        }
+    }
 }

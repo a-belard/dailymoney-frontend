@@ -18,4 +18,55 @@
             background-color: rgba(13, 37, 255, 0.15);
         }
     }
+
+    >div:nth-of-type(2) {
+        width: 50%;
+        margin: 20px auto 10px;
+        img {
+            width: 100%;
+            animation: bounce 2s ease-in infinite alternate;
+        }
+        @keyframes bounce {
+            from {
+                transform: translateY(0px);
+            }
+            to {
+                transform: translateY(35px);
+            }
+        }
+    }
+
+    >div:nth-of-type(3){
+        margin: 35px 20px 50px;
+        
+        p {
+            font-weight: 500;
+            margin: 10px 0;
+            color: rgba(29, 29, 34, 0.76);
+            text-align: justify;
+
+            ul {
+                margin: 0 20px;
+            }
+        }
+
+        div {
+            font-weight: 900;
+            font-size: 1em;
+            margin-top: 30px;
+
+            button {
+                margin-top: 10px;
+                padding: 15px 30px;
+                font-weight: 900;
+                border: none;
+                font-size: 1em;
+                text-transform: uppercase;
+                border-radius: 7px;
+                background-color: dodgerblue;
+                color: white;
+                transition: .5s;
+            }
+        }
+    }
 }
