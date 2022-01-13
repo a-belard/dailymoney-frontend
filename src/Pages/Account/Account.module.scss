@@ -1,11 +1,11 @@
 .account {
-    >div:first-of-type {
+    >div:first-of-type.top, div.loader {
         display: flex;
         margin:20px;
         align-items: center;
         position: relative;
 
-        div {
+        > div {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -17,7 +17,7 @@
             border-radius: 10px;
             background-color: rgba(13, 37, 255, 0.15);
 
-            &:last-of-type {
+            &:nth-of-type(2) {
                 align-self: flex-end;
                 color: white;
                 height: 40px;
@@ -27,6 +27,146 @@
                 position: absolute;
                 right: 0;
                 margin-right: 0;
+            }
+        }
+    }
+
+    >div:nth-of-type(2).userinfo{
+        margin: 35px 20px 95px;
+        p {
+            font-size: 1.1em;
+            margin: 4px 0;
+
+            &:nth-child(odd){
+                font-weight: 600;
+            }
+
+            &:nth-child(even){
+                margin-bottom: 22px;
+            }
+        }
+
+        div {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            button {
+                border-radius: 10px;
+                border: none;
+                padding: 15px 30px;
+                font-size: .9em;
+                font-weight: 900;
+                color: white;
+
+                &:first-of-type {
+                    background-color: rgb(228, 0, 0);
+                }
+
+                &:last-of-type {
+                    background-color: var(--mainBlue);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    
+                    i {
+                        margin: 0 0 -3.5px 10px;
+                    }
+                }
+            }
+        }
+    }
+    form {
+        margin: 30px 20px 95px;
+
+        >div {
+            display: flex;
+            margin: 20px 0;
+            align-items: flex-start;
+            flex-direction: column;
+            position: relative;
+
+            div {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+
+                div{
+                    justify-content: initial;
+                    width: 30%;
+
+                    input {
+                        margin-right: 10px;
+                    }
+
+                    label {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+
+            label {
+                font-weight: 600;
+                margin-bottom: 10px;
+            }
+
+            input, select {
+                height: 50px;
+                width: 100%;
+                border: 1px solid rgba(29, 138, 247, 0.25);
+                background-color: rgba(30, 143, 255, 0.178);
+                border-radius: 10px;
+                font-weight: 600;
+                font-size: 1.05em;
+                padding: 0 20px;
+
+                &[type=radio] {
+                    width: initial;
+                }
+
+                &:focus {
+                    outline-color: dodgerblue;
+                }
+
+                &[type=submit] {
+                    background-color: blue;
+                    color: white;
+                    font-weight: 800;
+                }
+
+                &[type=tel] {
+                    padding-left: 100px;
+                }
+            }
+
+            span {
+                font-size: .8em;
+                opacity: .8;
+            }
+
+            section {
+                position: absolute;
+                bottom: 16px;
+                left: 15px;
+                font-weight: 600;
+
+                span {
+                    display: inline-block;
+                    margin-left: 13px;
+                    transform: translateY(-2px);
+                    font-weight: 900;
+                    opacity: .5;
+                }
+            }
+
+            p {
+                color: red;
+                font-weight: 700;
+                margin-bottom: 20px;
+                font-size: .9em;
+                text-align: center;
+                width: 100%;
             }
         }
     }
