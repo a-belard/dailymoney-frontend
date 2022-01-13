@@ -1,4 +1,5 @@
 .invite {
+    margin-bottom: 95%;
     >div:first-of-type {
         margin-top: 20px;
         display: flex;
@@ -16,6 +17,130 @@
             margin-right: 10px;
             border-radius: 10px;
             background-color: rgba(13, 37, 255, 0.15);
+        }
+    }
+
+    >div.referralink {
+        margin: 25px 20px 0px;
+        position: relative;
+        h4 {
+            font-weight: 500;
+        }
+        
+        >p {
+            font-weight: 800;
+            font-size: .9em;
+            margin-top: 10px;
+            white-space: normal;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 15px 26px;
+            background-color: dodgerblue;
+            color: white;
+            border-radius: 7px;
+            font-weight: 700;
+            border: none;
+        }
+    }
+    >div:nth-of-type(3) {
+        margin: 30px 20px 10px;
+
+        > h4{
+            font-weight: 500;
+        }
+
+        p {
+            font-weight: 600;
+            font-size: .9em;
+            margin-top: 10px;
+        }
+
+        div {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+
+            a {
+                min-width: 100px;
+                width: 32%;
+                font-weight: 700;
+                font-size: .9em;
+                display: flex;
+                border: none;
+                align-items: center;
+                justify-content: center;
+                height: 40px;
+                border-radius: 10px;
+
+                i {
+                    margin-right: 5px;
+                    font-size: 1.2em;
+                }
+
+                &:first-of-type {
+                    background-color: dodgerblue;
+                    color: white;
+                }
+
+                &:nth-of-type(2) {
+                    background-color: rgb(31, 168, 26);
+                    color: white;
+                }
+                &:nth-of-type(3) {
+                    color: white;
+                    background-color: var(--mainBlue);
+                }
+            }
+        }
+    }
+    
+    >div:nth-of-type(4){
+        margin: 40px 20px 95px;
+
+        >h4 {
+            font-weight: 500;
+        }
+
+        h4 {
+            margin: 15px 0;
+        }
+        
+        table {
+            width: 100%;
+            text-align: left;
+            border-collapse: collapse;
+
+            td, th {
+                padding: 15px;
+                font-size: 1em;
+                font-weight: 600;
+            }
+
+            thead {
+                tr {
+                    background-color: var(--mainBlue);
+                    color: white;
+                }
+            }
+
+            tbody {
+                tr {
+                    border-bottom: 1px solid rgba(36, 36, 36, 0.35);
+                    
+                    &:hover {
+                        border-width: 1px 0px;
+                        border: dodgerblue solid;
+                    }
+
+                    td {
+                        padding: 20px 15px;
+                    }
+                }
+            }
         }
     }
 }
