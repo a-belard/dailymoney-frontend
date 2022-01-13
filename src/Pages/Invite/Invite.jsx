@@ -80,7 +80,7 @@ export default function Invite() {
                                 {referrals.length === 0 ?
                                     (
                                         <tr>
-                                            <td rowSpan={3}>No referrals invited yet!</td>
+                                            <td colSpan={3} style={{textAlign: "center", fontWeight: "700"}}>No referrals invited yet!</td>
                                         </tr>
                                     ):
                                     (
