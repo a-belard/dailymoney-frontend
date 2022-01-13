@@ -10,7 +10,6 @@ import { format } from 'date-fns'
 
 export default function Dashboard() {
     let decoded = decode(localStorage.token)
-    const [userinfo, setuserinfo] = useState({})
     const [withdrawals, setwithdrawals] = useState([])
     const [investments, setinvestments] = useState([])
     const [isloading, setisloading] = useState(true)
@@ -81,7 +80,6 @@ export default function Dashboard() {
                 ]
                 let stats = await axios.get("/stats/" + decoded._id)
                 stats = stats.data
-                setuserinfo(stats.userstats)
                 setisloading(false)
                 setinvestments(stats.transactions.filter(transaction => transaction.type === "deposit"))
                 setwithdrawals(stats.transactions.filter(transaction => transaction.type === "withdraw"))
