@@ -74,7 +74,7 @@ export default function Notifications() {
                         justifyContent: "center",
                         marginTop: "50px"
                     }}>
-                        <ClipLoader/>
+                        <ClipLoader size={20}/>
                     </div> 
                     : 
                     <div style={{
