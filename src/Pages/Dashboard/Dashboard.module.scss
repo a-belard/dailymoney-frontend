@@ -18,4 +18,164 @@
             background-color: rgba(13, 37, 255, 0.15);
         }
     }
+
+    >div:nth-of-type(2).stats {
+        margin: 20px 20px 95px;
+
+        > div {
+            padding: 15px 15px 7px;
+            margin: 15px 0;
+            background-color: rgba(0, 0, 0, 0.116);
+            border-radius: 10px;
+
+            &:first-of-type {
+                background-color: rgba(249, 134, 27, 0.15);
+
+                h4 {
+                    color: #F9851B;
+                }
+
+                >div {
+                    background-color: #F9851B;
+                    >div {
+                        display: none;
+                    }
+                }
+            }
+
+            &:nth-of-type(2) {
+                background-color: rgba(6, 150, 20, 0.2);
+
+                h4, span > i {
+                    color: #069614;
+                }
+                >div {
+                    background-color: #069614;
+                }
+            }
+
+            &:nth-of-type(3) {
+                background-color: rgba(32, 79, 251, 0.2);
+
+                h4, span > i {
+                    color: #2050FB;
+                }
+                >div {
+                    background-color: #2050FB;
+                }
+            }
+
+            &:nth-of-type(4) {
+                background-color: rgba(145, 0, 198, 0.2);
+
+                h4, span > i {
+                    color: #9200C6;
+                }
+                >div {
+                    background-color: #9200C6;
+                }
+            }
+
+            >div {
+                font-size: 1.1em;
+                padding: 15px;
+                margin: 10px 0;
+                border-radius: 10px;
+                border: none;
+                position: relative;
+                box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.6);
+                background-color: rgba(0, 0, 0, 0.404);
+
+                p {
+                    width: 70%;
+                    margin-top: 7px;
+                    color: rgba(255, 255, 255, 0.9);
+                    font-size: .80em;
+                }
+
+                >section {
+                    color: white;
+                    font-size: .8em;
+                    
+                    strong {
+                        font-size: 1.5em;
+                    }
+                }
+
+                >div {
+                    position: absolute;
+                    right: 10px;
+                    color: white;
+                    bottom: 12px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: .9em;
+                    font-weight: 500;
+
+                    span {
+                        height: 25px;
+                        width: 25px;
+                        margin-left: 5px;
+                        align-items: center;
+                        justify-content: center;
+                        display: flex;
+                        background-color: white;
+                        border-radius: 10px;
+                        box-shadow: 1px 1px 2px black;
+
+                        i {
+                            font-size: .75em;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    >div:nth-of-type(2).earned, >div:nth-of-type(2).invested {
+        margin: 20px 20px 95px;
+
+        h4 {
+            margin: 20px 0 10px;
+        }
+        table {
+            width: 100%;
+            text-align: left;
+            border-collapse: collapse;
+
+            td, th {
+                padding: 15px;
+                font-size: 1em;
+                font-weight: 600;
+            }
+
+            thead {
+                tr {
+                    background-color: var(--mainBlue);
+                    color: white;
+                }
+            }
+
+            tbody {
+                tr {
+                    border-bottom: 1px solid rgba(36, 36, 36, 0.35);
+                    
+                    &:hover {
+                        border-width: 1px 0px;
+                        border: dodgerblue solid;
+                    }
+
+                    td {
+                        padding: 20px 15px;
+                        font-weight: 500;
+                        
+                        &:nth-of-type(2) {
+                            font-weight: 700;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
