@@ -116,6 +116,7 @@ export default function Signup(props) {
                 </div>
                 <div>
                     <label htmlFor="trx">Trx wallet address</label>
+                    <span><strong>Invalid wallet address may lead to loss of your earnings.</strong></span>
                     <input type="text" id='trx' required onChange={(e) => setwalletAddress(e.target.value)}/>
                 </div>
                 <div>
