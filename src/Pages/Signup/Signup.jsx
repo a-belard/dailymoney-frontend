@@ -121,7 +121,7 @@ export default function Signup(props) {
                 </div>
                 <div>
                     <label htmlFor="password">Password</label>
-                    <input type="password" id='password' required pattern='[a-zA-Z0-9]{6,}' title='Password must be 6 or more characters' onChange={(e) => setpassword(e.target.value)}/>
+                    <input type="password" id='password' required pattern='[a-zA-Z0-9@_!$#%]{6,}' title='Password must be 6 or more characters' onChange={(e) => setpassword(e.target.value)}/>
                 </div>
                 <div>
                     <span>By clicking SIGN UP, you agree to our <strong>Terms, Privacy</strong> and <strong>Policies</strong>.</span>
