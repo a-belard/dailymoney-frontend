@@ -45,7 +45,7 @@ export default function Signup(props) {
         e.preventDefault()
         setisloading(true)
         let newUser = {
-            names, email, walletAddress, phone: "(" + phonecode.replace(" ","")+ ")" + phone, password, gender, referredby, country, username
+            names, email, walletAddress, phone: "(" + phonecode.replace(" ","")+ ")" + phone, password, gender, referredby: referredby === "new" ? undefined : referredby, country, username
         }
         await axiosInstance.post("/user", newUser)
         .then(data => {
