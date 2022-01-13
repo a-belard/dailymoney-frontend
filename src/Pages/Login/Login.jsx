@@ -60,7 +60,7 @@ export default function Login() {
                 </div>
                 <div>
                     <label htmlFor="password">Password</label>
-                    <input type="password" id='password' required pattern='[a-zA-Z0-9]{6,}' title='Password must be 6 or more characters' onChange={(e) => {setpassword(e.target.value);seterrortext("")}}/>
+                    <input type="password" id='password' required pattern='[a-zA-Z0-9@_!$#%]{6,}' title='Password must be 6 or more characters' onChange={(e) => {setpassword(e.target.value);seterrortext("")}}/>
                 </div>
                 <div>
                     <p>{errortext} {errortext === "Verify your email in order to login!" ? <span style={{color:"blue"}} onClick={() => sendEmail()}>Send again</span> : ""}</p>
