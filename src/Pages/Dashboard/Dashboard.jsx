@@ -13,6 +13,7 @@ export default function Dashboard() {
     let decoded = decode(localStorage.token)
     const [withdrawals, setwithdrawals] = useState([])
     const [investments, setinvestments] = useState([])
+    const [balance, setbalance] = useState(0)
     const [isloading, setisloading] = useState(true)
     const [active, setactive] = useState("dashboard")
     const [invest, setinvest] = useState(false)
@@ -90,6 +91,7 @@ export default function Dashboard() {
                 setisloading(false)
                 setinvestments(stats.transactions.filter(transaction => transaction.type === "deposit"))
                 setwithdrawals(stats.transactions.filter(transaction => transaction.type === "withdraw"))
+                setbalance(stats.userstats.balance)
                 setstats(
                     [
                         {...tempstats[0], amount: stats.userstats.activeInvestment},
@@ -158,6 +160,7 @@ export default function Dashboard() {
                         </div>
                         <div className={classes.earned}>
                             <h4>Earned and withdrew</h4>
+                            <h4>Pending: <span>{new Intl.NumberFormat().format(balance)}</span> $</h4>
                             <table>
                                     <thead>
                                         <tr>
