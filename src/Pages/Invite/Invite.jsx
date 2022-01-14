@@ -6,8 +6,10 @@ import decode from "jwt-decode"
 import axiosInstance from '../../axios'
 import { ClipLoader } from 'react-spinners'
 import { format } from 'date-fns'
+import checkToken from '../../CheckToken'
 
 export default function Invite() {
+    checkToken()
     let decoded = decode(localStorage.token)
     let id = decoded._id.toString()
     let referralink = `https://dailymoneyprovider.netlify.app/register/ ${id}`
