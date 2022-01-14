@@ -27,7 +27,7 @@ export default function Info() {
                     <br />
                     <ul>
                         <li>You get 3% of your investment everyday.</li>
-                        <li>You receive 10% from the 1<sup>st</sup> investments of your referrals</li>
+                        <li>You receive 10% from every investments of your referrals</li>
                     </ul>                
                 </p>
                 <br />
