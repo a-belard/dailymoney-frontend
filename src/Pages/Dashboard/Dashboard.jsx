@@ -7,6 +7,7 @@ import axios from "../../axios"
 import { ClipLoader } from 'react-spinners'
 import { Navigate } from 'react-router-dom'
 import { format } from 'date-fns'
+import InvestModal from '../../Components/InvestModal/InvestModal'
 
 export default function Dashboard() {
     let decoded = decode(localStorage.token)
@@ -14,6 +15,11 @@ export default function Dashboard() {
     const [investments, setinvestments] = useState([])
     const [isloading, setisloading] = useState(true)
     const [active, setactive] = useState("dashboard")
+    const [invest, setinvest] = useState(false)
+
+    function handleClose(){
+        setinvest(false)
+    }
     const [stats, setstats] = useState([
             {
                 name: "Earning investment",
@@ -51,21 +57,21 @@ export default function Dashboard() {
                 let tempstats = [
                     {
                         name: "Earning investment",
-                        unit: "Trx",
+                        unit: "$",
                         desc: <p>Earning 3% daily</p>,
                         active: "earning",
                         className: classes.earning
                     },
                     {
                         name: "Total earned",
-                        unit: "Trx",
+                        unit: "$",
                         active: "withdrawals",
                         className: classes.withdrew,
                         desc: <p>Accumulated amount  + 10% from referrals first investments</p>
                     },
                     {
                         name: "Total investment",
-                        unit: "Trx",
+                        unit: "$",
                         active: "investments",
                         className: classes.investment,
                         desc: <p>Investment from the start</p>
@@ -123,7 +129,7 @@ export default function Dashboard() {
                                                     :
                                                     (
                                                         <div>
-                                                            <ClipLoader size={20}/>
+                                                            <ClipLoader size={20} color='white'/>
                                                         </div>
                                                     )
                                                 } {stat.unit}
@@ -190,7 +196,10 @@ export default function Dashboard() {
                         <h3>Investment</h3>
                     </div>     
                     <div className={classes.invested}>
-                            <h4>Investments</h4>
+                            <div>
+                                <h4>Investments</h4>
+                                <span onClick={() => setinvest(true)}><i className='fa fa-plus-circle'></i> Invest more</span>
+                            </div>
                             <table>
                                     <thead>
                                         <tr>
@@ -216,7 +225,8 @@ export default function Dashboard() {
                                         }
                                     </tbody>
                             </table>   
-                    </div>                 
+                    </div>   
+                    <InvestModal invest={invest} handleClose={handleClose}/>              
                 </>
                  )
                  :
