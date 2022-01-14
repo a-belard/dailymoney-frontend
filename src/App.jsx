@@ -11,6 +11,7 @@ import Login from './Pages/Login/Login';
 import Notifications from './Pages/Notifications/Notifications';
 import Signup from './Pages/Signup/Signup';
 import decode from "jwt-decode"
+import Dailmoney from "./Pages/Dailymoney/Dailmoney";
 
 function App() {
   let decoded;
@@ -43,6 +44,7 @@ function App() {
         <Route element={<Notifications/>} path="/notifications"/>
         <Route element={<Account/>} path="/account"/>
         <Route element={<Info/>} path="/info"/>
+        <Route element={<Dailmoney/>} path="/dailymoney"/>
         <Route path="/*" element={<Navigate to="/"/>}/>
       </Routes>
   );
