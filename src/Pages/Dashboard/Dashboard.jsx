@@ -175,7 +175,7 @@ export default function Dashboard() {
                                                 withdrawals.map((withdrawal, i) => (
                                                     <tr key={i}>
                                                         <td>{format(new Date(withdrawal.createdAt), "HH:MM EEE, L yyyy")}</td>
-                                                        <td>{withdrawal.amount}</td>
+                                                        <td>$ {new Intl.NumberFormat().format(withdrawal.amount)}</td>
                                                     </tr>
                                                 ))
                                             )
@@ -198,7 +198,7 @@ export default function Dashboard() {
                     <div className={classes.invested}>
                             <div>
                                 <h4>Investments</h4>
-                                <span onClick={() => setinvest(true)}><i className='fa fa-plus-circle'></i> Invest more</span>
+                                <span onClick={() => setinvest(true)}><i className='fa fa-plus-circle'></i> Top up</span>
                             </div>
                             <table>
                                     <thead>
@@ -218,7 +218,7 @@ export default function Dashboard() {
                                                 investments.map((investment, i) => (
                                                     <tr key={i}>
                                                         <td>{format(new Date(investment.createdAt), "HH:MM EEE, L yyyy")}</td>
-                                                        <td>{investment.amount}</td>
+                                                        <td>$ {new Intl.NumberFormat().format(investment.amount)}</td>
                                                     </tr>
                                                 ))
                                             )
@@ -226,7 +226,7 @@ export default function Dashboard() {
                                     </tbody>
                             </table>   
                     </div>   
-                    <InvestModal invest={invest} handleClose={handleClose}/>              
+                    <InvestModal invest={invest} handleClose={handleClose} id={decoded._id}/>              
                 </>
                  )
                  :
