@@ -68,6 +68,15 @@ export default function InvestModal(props) {
             {/* <Typography id="transition-modal-title" variant="h6" component="h4">
               
             </Typography> */}
+            <span style={{
+              fontSize: "1.35em",
+              position: "absolute",
+              right: "15px",
+              top: "15px",
+            }}
+            onClick={props.handleClose}>
+              <i className='fa fa-times-circle'></i>
+            </span>
             <Typography 
               fontWeight={700} 
               variant='primary'
@@ -127,8 +136,8 @@ export default function InvestModal(props) {
                 <Button fullWidth 
                     ref={submitBtn}
                     type='submit' 
-                    variant= {issubmitting === "submitted" ? "success" : "contained"}
-                    color='primary' 
+                    variant= "contained"
+                    color={issubmitting === "submitted" ? "success" :'primary'}
                     sx={{fontWeight: "700",height: "45px"}}
                 >
                   {issubmitting === "submitted" ?
