@@ -6,6 +6,8 @@ import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
 import classes from "./InvestModal.module.scss"
 import { Button, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { ClipLoader } from 'react-spinners';
+import axios from "../../axios"
 
 const style = {
   position: 'absolute',
@@ -23,6 +25,7 @@ const style = {
 export default function InvestModal(props) {
   const [amount, setamount] = React.useState('')
   const submitBtn = React.useRef(null)
+  const [issubmitting, setissubmitting] = React.useState("submit")
   let available_amounts = [
     100, 200, 500, 1000, 2000, 5000,
     10000, 20000, 50000,
@@ -33,9 +36,18 @@ export default function InvestModal(props) {
     window.navigator.clipboard.writeText("TPwE1V1SSTyC16Hryz2WZyyZLcNYQyf8j3")
   }
 
-  function handleSubmit(e){
+  async function handleSubmit(e){
     e.preventDefault()
-    console.log(amount)
+    submitBtn.current.disabled = true
+    setissubmitting("submitting")
+    console.log(props.id)
+    await axios.post("/transactions", {
+        userId: props.id, type: "deposit", amount
+    })
+    .then(() => {
+      setissubmitting("submitted")
+    },
+    err => console.log(err.response))
   }
 
   return (
@@ -90,7 +102,12 @@ export default function InvestModal(props) {
                   onChange={(e) => setamount(e.target.value)}
                 >
                   {available_amounts.map((amount, i) => (
-                    <MenuItem key={i} value={amount}>{new Intl.NumberFormat().format(amount)} $</MenuItem>
+                    <MenuItem 
+                      key={i} 
+                      value={amount}
+                    >
+                          <strong style={{fontWeight: "800"}}>{new Intl.NumberFormat().format(amount)} $</strong>
+                    </MenuItem>
                   ))}
                 </Select> 
               </FormControl>
@@ -110,11 +127,20 @@ export default function InvestModal(props) {
                 <Button fullWidth 
                     ref={submitBtn}
                     type='submit' 
-                    variant='contained'
+                    variant= {issubmitting === "submitted" ? "success" : "contained"}
                     color='primary' 
                     sx={{fontWeight: "700",height: "45px"}}
                 >
-                  SUBMIT
+                  {issubmitting === "submitted" ?
+                  "Submitted" 
+                  : issubmitting === "submitting" ?
+                  <span 
+                    style={{display: "flex", justifyContent: "center", "alignItems": "center"}}
+                    >
+                    <ClipLoader size={20} color='white'/>
+                  </span>
+                  : "Submit"
+                  }
                 </Button>
             </form>
           </Box>
