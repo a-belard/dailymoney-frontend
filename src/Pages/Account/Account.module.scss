@@ -141,9 +141,10 @@
                 }
 
                 &[type=submit] {
-                    background-color: blue;
+                    background-color: var(--mainBlue);
                     color: white;
-                    font-weight: 800;
+                    font-weight: 700;
+                    font-family: "Montserrat";
                 }
 
                 &[type=tel] {
