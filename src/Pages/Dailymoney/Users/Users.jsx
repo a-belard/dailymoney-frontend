@@ -24,6 +24,7 @@ export default function Users() {
                 </div>
                 <h3>Users</h3>
             </div>
+            <p><strong>{!isloading && users.length}</strong> users</p>
             <div>
                 {isloading ?
                  <span style={{display: "flex", justifyContent: "center"}}><ClipLoader size={20}/></span>
