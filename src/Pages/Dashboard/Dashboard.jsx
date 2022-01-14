@@ -8,8 +8,10 @@ import { ClipLoader } from 'react-spinners'
 import { Navigate } from 'react-router-dom'
 import { format } from 'date-fns'
 import InvestModal from '../../Components/InvestModal/InvestModal'
+import checkToken from '../../CheckToken'
 
 export default function Dashboard() {
+    checkToken()
     let decoded = decode(localStorage.token)
     const [withdrawals, setwithdrawals] = useState([])
     const [investments, setinvestments] = useState([])
