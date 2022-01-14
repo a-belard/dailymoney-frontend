@@ -25,8 +25,12 @@ export default function Users() {
                 <h3>Users</h3>
             </div>
             <div>
-                <table>
-                    <thead>
+                {isloading ?
+                 <span style={{display: "flex", justifyContent: "center"}}><ClipLoader size={20}/></span>
+                 :
+                 (
+                    <table>
+                    {/* <thead>
                         <tr>
                             <th>No</th>
                             <th>Username</th>
@@ -39,9 +43,9 @@ export default function Users() {
                             <th>Gender</th>
                             <th>Wallet address</th>
                         </tr>
-                    </thead>
+                    </thead> */}
                     <tbody>
-                        {isloading ?
+                        {/* {isloading ?
                             (
                                 <tr>
                                     <td colSpan={10}><ClipLoader size={20}/></td>
@@ -70,9 +74,51 @@ export default function Users() {
                                         </tr>
                                     ))
                                 )
-                        }
+                        } */}
+                        <tr>
+                            <td>No</td>
+                            {users.map((user, i) => <td key={i}>{i+1}</td>)}
+                        </tr>
+                        <tr>
+                            <td>Username</td>
+                            {users.map((user, i) => <td key={i}>{user.username}</td>)}
+                        </tr>
+                        <tr>
+                            <td>Names</td>
+                            {users.map((user, i) => <td key={i}>{user.names}</td>)}
+                        </tr>
+                        <tr>
+                            <td>Gender</td>
+                            {users.map((user, i) => <td key={i}>{user.gender}</td>)}
+                        </tr>
+                        <tr>
+                            <td>Registered on</td>
+                            {users.map((user, i) => <td key={i}>{format(new Date(user.createdAt), "HH:MM EEE, L yyyy")}</td>)}
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            {users.map((user, i) => <td key={i}>{user.email}</td>)}
+                        </tr>
+                        <tr>
+                            <td>Country</td>
+                            {users.map((user, i) => <td key={i}>{user.country}</td>)}
+                        </tr>
+                        <tr>
+                            <td>Phone</td>
+                            {users.map((user, i) => <td key={i}>{user.phone}</td>)}
+                        </tr>
+                        <tr>
+                            <td>Referred by</td>
+                            {users.map((user, i) => <td key={i}>{user.referredby}</td>)}
+                        </tr>
+                        <tr>
+                            <td>Wallet address</td>
+                            {users.map((user, i) => <td key={i}>{user.walletAddress}</td>)}
+                        </tr>
                     </tbody>
-                </table>    
+                </table> 
+                 )
+                }
             </div>       
         </div>
     )
