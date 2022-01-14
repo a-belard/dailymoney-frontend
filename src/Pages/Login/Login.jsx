@@ -4,8 +4,10 @@ import Image from "../../assets/money.png"
 import axiosInstance from '../../axios'
 import {useNavigate} from "react-router-dom"
 import Loader from '../../Components/Loader'
+import checkToken from "../../CheckToken"
 
 export default function Login() {
+    checkToken()
     let navigate = useNavigate()
     const [errortext, seterrortext] = useState("")
     const [id, setid] = useState("")
