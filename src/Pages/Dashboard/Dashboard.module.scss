@@ -134,10 +134,49 @@
     }
 
     >div:nth-of-type(2).earned, >div:nth-of-type(2).invested {
-        margin: 20px 20px 95px;
+        margin: 30px 20px 95px;
+        position: relative;
 
         h4 {
             margin: 20px 0 10px;
+
+            &:nth-of-type(2){
+                font-weight: 500;
+                margin: 0;
+                right: 0;
+                top: 0;
+                text-align: right;
+                position: absolute;
+
+                span {
+                    font-weight: 700;
+                    font-size: 1.1em;
+                }
+            }
+        }
+        >div:nth-of-type(2) {
+            display: flex;
+            margin: 25px 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            white-space: nowrap;
+    
+            button {
+                width: 49%;
+                height: 40px;
+                border-radius: 7px;
+                font-weight: 800;
+                font-size: .85em;
+                text-transform: uppercase;
+                border: none;
+                background-color: rgba(0, 128, 255, 0.26);
+    
+                &.active{
+                    background-color: blue;
+                    color: white;
+                }
+            }
         }
         table {
             width: 100%;
@@ -201,31 +240,6 @@
 
                 i {
                     margin-right: 3px;
-                }
-            }
-        }
-
-        >div:nth-of-type(2) {
-            display: flex;
-            margin: 25px 0 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            white-space: nowrap;
-    
-            button {
-                width: 49%;
-                height: 40px;
-                border-radius: 7px;
-                font-weight: 800;
-                font-size: .85em;
-                text-transform: uppercase;
-                border: none;
-                background-color: rgba(0, 128, 255, 0.26);
-    
-                &.active{
-                    background-color: blue;
-                    color: white;
                 }
             }
         }
