@@ -4,8 +4,10 @@ import axiosInstance from '../../axios'
 import Loader from '../../Components/Loader'
 import countries from './countries'
 import classes from "./Signup.module.scss"
+import checkToken from "../../CheckToken"
 
 export default function Signup(props) {
+    checkToken()
     let params = useParams()
     let navigate = useNavigate()
     let referredby = params.referer
