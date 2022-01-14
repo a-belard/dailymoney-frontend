@@ -1,9 +1,9 @@
 import React from 'react'
-import classes from "../../../Pages/Dashboard/Dashboard.module.scss"
+import classes from "./Stats.module.scss"
 
 export default function Stats() {
     return (
-        <div className={classes.dashboard}>
+        <div className={classes.stats}>
             <div>
                 <div>
                     <i className='fa fa-bars'></i>
