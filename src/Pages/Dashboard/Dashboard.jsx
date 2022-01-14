@@ -16,6 +16,7 @@ export default function Dashboard() {
     const [isloading, setisloading] = useState(true)
     const [active, setactive] = useState("dashboard")
     const [invest, setinvest] = useState(false)
+    const [isapproved, setisapproved] = useState(true)
 
     function handleClose(){
         setinvest(false)
@@ -200,6 +201,10 @@ export default function Dashboard() {
                                 <h4>Investments</h4>
                                 <span onClick={() => setinvest(true)}><i className='fa fa-plus-circle'></i> Top up</span>
                             </div>
+                            <div>
+                                <button className={isapproved && classes.active} onClick={() => setisapproved(true)}>APPROVED</button>
+                                <button className={!isapproved && classes.active} onClick={() => setisapproved(false)}>PENDING</button>
+                            </div>
                             <table>
                                     <thead>
                                         <tr>
@@ -215,7 +220,7 @@ export default function Dashboard() {
                                                 </tr>
                                             ):
                                             (
-                                                investments.map((investment, i) => (
+                                                investments.filter(investment => isapproved ? investment.approved === true : investment.approved === false).map((investment, i) => (
                                                     <tr key={i}>
                                                         <td>{format(new Date(investment.createdAt), "HH:MM EEE, L yyyy")}</td>
                                                         <td>$ {new Intl.NumberFormat().format(investment.amount)}</td>
