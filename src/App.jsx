@@ -21,8 +21,10 @@ function App() {
     }
     try{
       decoded = decode(localStorage.token)
-      if(!decoded.exp || decoded.exp * 1000){
-      }
+      if(!decoded.exp || decoded.exp * 1000 < new Date()){
+        localStorage.removeItem("token")
+        window.location.href = "/login"
+        }
     }
     catch(err){
       localStorage.removeItem("token")
