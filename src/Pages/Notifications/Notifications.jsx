@@ -6,8 +6,11 @@ import axiosInstance from '../../axios'
 import decode from "jwt-decode"
 import { format } from 'date-fns'
 import { ClipLoader } from 'react-spinners'
+import checkToken from "../../CheckToken"
+
 
 export default function Notifications() {
+    checkToken()
     let decoded = decode(localStorage.token)
     const [isloading, setisloading] = useState(true)
     const [notifications, setnotifications] = useState([])
