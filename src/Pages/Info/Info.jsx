@@ -1,13 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Logo from '../../Components/Logo/Logo'
 import Navbar from '../../Components/Navbar/Navbar'
 import classes from "./Info.module.scss"
 import Image from "../../assets/money.png"
+import { FormControl, TextField } from '@mui/material'
+import decode from "jwt-decode"
+import axiosInstance from '../../axios'
 
 export default function Info() {
+    let decoded = decode(localStorage.token)
+    const [email, setemail] = useState(decoded.email)
+    const [message, setmessage] = useState("");
+    const [sent, setsent] = useState(false)
     let trxWalletAddress = "TPwE1V1SSTyC16Hryz2WZyyZLcNYQyf8j3"
     let copyToClipboard = () => {
         window.navigator.clipboard.writeText(trxWalletAddress)
+    }
+    let handleSubmit = async (e) => {
+        e.preventDefault();
+        setsent(true)
+        await axiosInstance.post("/message", {email, message})
     }
     return (
         <div className={classes.info}>
@@ -38,7 +50,23 @@ export default function Info() {
                     TPwE1V1SSTyC16Hryz2WZyyZLcNYQyf8j3
                     <button onClick={(e) => {copyToClipboard(); e.currentTarget.style.backgroundColor = "#0a0"}}>Copy</button>
                 </div>
+                <br />
             </div>
+                <form onSubmit={e => handleSubmit(e)}>
+                    <h4>Any Message or Question?</h4>
+                    <p>You can email us here..</p>
+                    <div>
+                        <FormControl fullWidth>
+                            <TextField type={"email"} required label="Email" defaultValue={decoded.email} variant={"outlined"} onChange={e => setemail(e.target.value)}></TextField>
+                        </FormControl>
+                        <br />
+                        <br />
+                        <FormControl fullWidth>
+                            <TextField type={"text"} required rows={4} multiline label="Message or Question" variant={"outlined"} onChange={e => setmessage(e.target.value)}></TextField>
+                        </FormControl>
+                        <input type="submit" disabled={sent} value={!sent ? "SEND" : "SENT✅"}/>
+                    </div>
+                </form>
             <Navbar active={"info"} />
         </div>
     )
