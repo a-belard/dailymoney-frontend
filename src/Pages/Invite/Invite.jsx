@@ -45,7 +45,7 @@ export default function Invite() {
             </div>
             <div>
                 <h4>Share</h4>
-                <p>⚠️ You directly get 10% of the first investment of your referrals.</p>
+                <p>⚠️ You directly get 10% of every investment of your referrals.</p>
                 <div>
                     <a href={`https://t.me/share/url?url=${referralink.replace(" ","")}&text=Dailymoney. Real. Take your shot!`} target="_blank" rel='noreferrer'>
                         <i className='fab fa-telegram-plane'></i>Share
