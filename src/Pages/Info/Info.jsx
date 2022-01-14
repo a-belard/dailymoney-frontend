@@ -6,8 +6,10 @@ import Image from "../../assets/money.png"
 import { FormControl, TextField } from '@mui/material'
 import decode from "jwt-decode"
 import axiosInstance from '../../axios'
+import checkToken from '../../CheckToken'
 
 export default function Info() {
+    checkToken()
     let decoded = decode(localStorage.token)
     const [email, setemail] = useState(decoded.email)
     const [message, setmessage] = useState("");
