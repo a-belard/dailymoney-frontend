@@ -23,6 +23,8 @@
         box-sizing: border-box;
         overflow: auto;
         max-height: 85vh;
+        border-radius: 10px;
+        border: 1px solid rgba(0, 0, 0, 0.15); 
 
         table {
             width: 100%;
@@ -58,20 +60,23 @@
 
             tbody {
                 tr {
-                    border-bottom: 1px solid rgba(36, 36, 36, 0.35);
                     
-                    &:hover {
-                        border-width: 1px 0px;
-                        border: dodgerblue solid;
-                    }
+                    // &:hover {
+                    //     // border-width: 1px 0px;
+                    //     // border: dodgerblue solid;
+                    // }
 
                     td {
                         background-color: white;
                         padding: 20px 15px;
+                        border-bottom: 1px solid rgba(36, 36, 36, 0.15);
 
-                        &:nth-child(2) {
+                        &:nth-child(1) {
                             position: sticky;
                             left: -1px;
+                            color: white;
+                            background-color: rgb(0, 99, 199);
+                            border: none !important;
                         }
                     }
                 }
