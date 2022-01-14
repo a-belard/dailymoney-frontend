@@ -110,7 +110,7 @@ export default function Users() {
                         </tr>
                         <tr>
                             <td>Referred by</td>
-                            {users.map((user, i) => <td key={i}>{user.referredby}</td>)}
+                            {users.map((user, i) => <td key={i}>{user.referredby ? user.referredby.username : "No one"}</td>)}
                         </tr>
                         <tr>
                             <td>Wallet address</td>
