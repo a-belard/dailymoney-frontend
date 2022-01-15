@@ -27,21 +27,21 @@ export default function Dashboard() {
     const [stats, setstats] = useState([
             {
                 name: "Earning investment",
-                unit: "Trx",
+                unit: "$",
                 desc: <p>Earning 3% daily"</p>,
                 active: "earning",
                 className: classes.earning
             },
             {
                 name: "Total withdrew",
-                unit: "Trx",
+                unit: "$",
                 active: "withdrawals",
                 className: classes.withdrew,
                 desc: <p>Accumulated amount  + 10% from referrals first investments</p>
             },
             {
                 name: "Total investment",
-                unit: "Trx",
+                unit: "$",
                 active: "investments",
                 className: classes.investment,
                 desc: <p>Investment from the start</p>
