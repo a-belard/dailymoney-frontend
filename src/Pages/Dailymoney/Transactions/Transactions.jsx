@@ -121,7 +121,7 @@ export default function Transactions() {
                     )
                     :
                     (
-                        transactions.length === 0 ?
+                        balances.length === 0 ?
                         <span style={
                             {
                                 display: "flex",
@@ -130,7 +130,7 @@ export default function Transactions() {
                                 marginTop: "50px"
                             }
                         }>
-                            <strong>No pending investments!</strong>
+                            <strong>No pending balances!</strong>
                         </span>
                     :
                     (
