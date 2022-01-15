@@ -17,7 +17,7 @@ export default function Notifications() {
             })
         }
         getNotifications()
-    })
+    }, [])
 
     let readNotification = (_id) => {
         let notifs = [...notifications]
