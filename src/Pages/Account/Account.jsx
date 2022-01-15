@@ -93,7 +93,6 @@ export default function Account() {
                         <p>Trx wallet address</p><p>{userinfo.walletAddress}</p>
                         {userinfo.referredby && <><p>Referred by</p><p>{referralUsername}</p></>}
                         <div>
-                            <button>DELETE ACCOUNT</button>
                             <button onClick={() => logout()}>LOG OUT <i className='fa fa-sign-out-alt'></i></button>
                         </div>
                     </div>
