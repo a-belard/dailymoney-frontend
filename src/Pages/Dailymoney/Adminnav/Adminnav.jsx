@@ -17,7 +17,7 @@ export default function Admin({active, changePage}) {
 
     let nav = [
         {name: "Summary", icon: "fa fa-bars", active: "dashboard"},
-        {name: "Transactions", icon: "fa fa-business-time", active: "invite"},
+        {name: "Pending", icon: "fa fa-business-time", active: "invite"},
         {name: "Notif.", icon: "fa fa-bell", active: "notifications"},
         {name: "Users", icon: "fa fa-users", active: "users"},      
     ]
