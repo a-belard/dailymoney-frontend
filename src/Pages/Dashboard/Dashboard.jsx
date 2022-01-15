@@ -37,7 +37,7 @@ export default function Dashboard() {
                 unit: "$",
                 active: "withdrawals",
                 className: classes.withdrew,
-                desc: <p>Accumulated amount  + 10% of every referral investments</p>
+                desc: <p>Accumulated amount + 10% of every referral investments</p>
             },
             {
                 name: "Total investment",
