@@ -57,6 +57,8 @@ export default function Transactions() {
                         <ClipLoader size={20}/>
                     </span>
                     :
+                    !isbalances ?
+                    (
                         transactions.length === 0 ?
                         <span style={
                             {
@@ -87,6 +89,9 @@ export default function Transactions() {
                             </div>
                         ))
                     )
+                    )
+                    :
+                    <h4>Balances</h4>
                 }
             </div>
         </div>
