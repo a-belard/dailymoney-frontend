@@ -21,7 +21,15 @@ export default function Transactions() {
             setisloading(false)
         }
         getTransactions()
-    })
+    }, [])
+
+    let approve = async(id) => {
+        let transacts = transactions.filter(transact => transact._id !== id);
+        settransactions(transacts)
+        await axiosInstance.patch("/transaction/" + id)
+        .then(() => {},
+        err => console.log(err.response))
+    }
     return (
         <div className={classes.transactions}>
             <div>
@@ -34,7 +42,7 @@ export default function Transactions() {
                 <div></div>
                 <div>
                     <button className={!isbalances && classes.active} onClick={() => setisbalances(false)}>INVESTMENTS</button>
-                    <button className={isbalances && classes.active} onClick={() => setisbalances(false)}>BALANCES</button>
+                    <button className={isbalances && classes.active} onClick={() => setisbalances(true)}>BALANCES</button>
                 </div>
                 {
                     isloading ? 
@@ -62,7 +70,7 @@ export default function Transactions() {
                         </span>
                     :
                     (
-                        transactions.map(transact => (
+                        transactions && transactions.map(transact => (
                             <div className={classes.transacts}>
                                 <div>
                                     <span>{transact.userId.username}</span>
@@ -75,7 +83,7 @@ export default function Transactions() {
                                             COPY
                                     </Button>
                                 </div>
-                                <button>APPROVE</button>
+                                <button onClick={() => approve(transact._id)}>APPROVE</button>
                             </div>
                         ))
                     )
