@@ -19,7 +19,7 @@
         }
     }
 
-    >div:nth-of-type(2).stats {
+    >div.stats {
         margin: 20px 20px 95px;
 
         > div {
@@ -37,9 +37,6 @@
 
                 >div {
                     background-color: #F9851B;
-                    >div {
-                        display: none;
-                    }
                 }
             }
 
@@ -133,7 +130,7 @@
         }
     }
 
-    >div:nth-of-type(2).earned, >div:nth-of-type(2).invested {
+    >div.earned, >div.invested {
         margin: 30px 20px 95px;
         position: relative;
 
@@ -209,7 +206,7 @@
                         padding: 20px 15px;
                         font-weight: 500;
                         
-                        &:nth-of-type(2) {
+                        &:nth-of-type(3) {
                             font-weight: 700;
                         }
                     }
