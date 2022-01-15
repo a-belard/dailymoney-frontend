@@ -45,7 +45,7 @@ export default function Dailmoney() {
                 {
                     activepage === "dashboard" ?
                         (
-                            <Stats/>
+                            <Stats setactive={() => setactivepage("users")}/>
                         )
                     :
                     activepage === "invite" ?
