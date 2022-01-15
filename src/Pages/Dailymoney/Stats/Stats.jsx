@@ -207,16 +207,20 @@ export default function Stats(props) {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {investments.length === 0 ?
+                                        {investments
+                                        .filter(investment => isapproved ? investment.approved === true : investment.approved === false)
+                                        .length === 0 ?
                                             (
                                                 <tr>
-                                                    <td colSpan={3} style={{textAlign: "center", fontWeight: 700}}>No investments yet!</td>
+                                                    <td colSpan={3} style={{textAlign: "center", fontWeight: 700}}>{isapproved ? "No investments yet!" : "No pending investments!"}</td>
                                                 </tr>
                                             ):
                                             (
-                                                investments.filter(investment => isapproved ? investment.approved === true : investment.approved === false).map((investment, i) => (
+                                                investments
+                                                .filter(investment => isapproved ? investment.approved === true : investment.approved === false)
+                                                .map((investment, i) => (
                                                     <tr key={i}>
-                                                        <td>{format(new Date(investment.createdAt), "HH:MM EEE, L yyyy")}</td>
+                                                        <td>{format(new Date(investment.updatedAt), "HH:MM EEE, L yyyy")}</td>
                                                         <td>{investment.userId.username}</td>
                                                         <td>$ {new Intl.NumberFormat().format(investment.amount)}</td>
                                                     </tr>
