@@ -6,8 +6,10 @@ import decode from "jwt-decode"
 import { ClipLoader } from 'react-spinners'
 import { useNavigate } from 'react-router-dom'
 import countries from '../Signup/countries'
+import checkToken from '../../CheckToken'
 
 export default function Account() {
+    checkToken()
     const navigate = useNavigate()
     const [userinfo, setuserinfo] = useState({})
     const [referralUsername, setreferralUsername] = useState("")
