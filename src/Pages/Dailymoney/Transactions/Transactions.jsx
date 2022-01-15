@@ -36,7 +36,7 @@ export default function Transactions() {
                 <div>
                     <i className='fa fa-hourglass-end'></i>
                 </div>
-                <h3>Transactions</h3>
+                <h3>Pending transactions</h3>
             </div>
             <div>
                 <div></div>
