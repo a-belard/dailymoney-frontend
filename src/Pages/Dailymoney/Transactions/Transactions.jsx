@@ -69,6 +69,7 @@ export default function Transactions() {
                                     <strong>{new Intl.NumberFormat().format(transact.amount)} $</strong>
                                     <span>Wallet address: <strong>{transact.userId.walletAddress}</strong></span>
                                     <Button 
+                                        onClick={() => window.navigator.clipboard.writeText(transact.userId.walletAddress)}
                                         variant={"outlined"} 
                                         style={{width: "100px", fontWeight: "600"}}>
                                             COPY
