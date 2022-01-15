@@ -7,15 +7,39 @@ import axiosInstance from '../../../axios'
 export default function Users() {
     const [isloading, setisloading] = useState(true)
     const [users, setusers] = useState([])
+    const [usersCopy, setusersCopy] = useState([])
 
     useEffect(() => {
         let getUsers = async () => {
             let data = await axiosInstance.get("/users")
             setusers(data.data)
+            setusersCopy(data.data)
             setisloading(false)
         }
         getUsers()
     },[])
+
+    function search(username){
+        let allusers = usersCopy.filter(user => user.username.indexOf(username) !== -1);
+        if(username !== ""){
+            setusers(allusers)
+        }
+        else{
+            setusers(usersCopy)
+        }
+    }
+
+    function searchreferrer(username){
+        let allusers = usersCopy
+                        .filter(user => ("referredby" in user))
+                        .filter(user => user.referredby.username.indexOf(username) !== -1);
+        if(username !== ""){
+            setusers(allusers)
+        }
+        else{
+            setusers(usersCopy)
+        }
+    }
     return (
         <div className={classes.users}>
             <div>
@@ -23,6 +47,14 @@ export default function Users() {
                     <i className='fa fa-users'></i>
                 </div>
                 <h3>Users</h3>
+            </div>
+            <div>
+                <h4>Search</h4>
+                <label htmlFor="username">Username: </label>
+                <input type="text" id='username' onChange={e => search(e.target.value)}/>
+                <br /><br />
+                <label htmlFor="referredby">Referred by: </label>
+                <input type="text" id='referredby' onChange={e => searchreferrer(e.target.value)}/>
             </div>
             <p><strong>{!isloading && users.length}</strong> users</p>
             <div>
