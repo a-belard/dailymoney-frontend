@@ -7,12 +7,32 @@ import classes from "./Transactions.module.scss"
 export default function Transactions() {
     const [isbalances, setisbalances] = useState(false)
     const [transactions, settransactions] = useState([])
-    // const [balances, setbalances] = useState([])
+    const [balances, setbalances] = useState([])
     const [isloading, setisloading] = useState(true)
 
+    function diff_hours(dt2, dt1) 
+    {
+        var diff =(dt2.getTime() - dt1.getTime()) / 1000;
+        diff /= (60 * 60);
+        return Math.abs(Math.round(diff));
+    }
+
     useEffect(() => {
-        let getTransactions = async () => {
-            let transactions = await axiosInstance.get("/stats")
+        let getTransactionsAndBalances = async () => {
+            let transactions =  await axiosInstance.get("/stats")
+            let users = await axiosInstance.get("/users")
+            users = users.data
+            users = users.filter(user => user.verified === true)
+            await users.forEach(user => {
+                let diffhours = 0;
+                if(new Date(user.endTime) < new Date()){
+                    diffhours = diff_hours(new Date(), new Date(user.endTime))
+                }
+                let nOfTimes = Math.ceil(diffhours/24)
+                user.totBalance = (nOfTimes * ((3 / 100) * user.activeInvestment)) + user.balance
+            })
+            users = users.filter(user => user.totBalance > 0)
+            setbalances(users)
             transactions = transactions.data.transactions
             transactions = transactions
                             .filter(transact => transact.approved === false)
@@ -20,7 +40,7 @@ export default function Transactions() {
             settransactions(transactions)
             setisloading(false)
         }
-        getTransactions()
+        getTransactionsAndBalances()
     }, [])
 
     let approve = async(id) => {
@@ -29,6 +49,15 @@ export default function Transactions() {
         await axiosInstance.patch("/transaction/" + id)
         .then(() => {},
         err => console.log(err.response))
+    }
+
+    let pay = async(userId, amount) => {
+        let transact = {userId, amount, type:"withdraw"}
+        let bals = balances.filter(bal => bal._id !== userId)
+        setbalances(bals)
+        await axiosInstance.post("/tranasctions",transact)
+        .then(() => {},
+        err => console.log(err))
     }
     return (
         <div className={classes.transactions}>
@@ -91,7 +120,38 @@ export default function Transactions() {
                     )
                     )
                     :
-                    <h4>Balances</h4>
+                    (
+                        transactions.length === 0 ?
+                        <span style={
+                            {
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center",
+                                marginTop: "50px"
+                            }
+                        }>
+                            <strong>No pending investments!</strong>
+                        </span>
+                    :
+                    (
+                        balances && balances.map(balance => (
+                            <div className={classes.transacts}>
+                                <div>
+                                    <span>{balance.username}</span>
+                                    <strong>{new Intl.NumberFormat().format(balance.totBalance)} $</strong>
+                                    <span>Wallet address: <strong>{balance.walletAddress}</strong></span>
+                                    <Button 
+                                        onClick={() => window.navigator.clipboard.writeText(balance.walletAddress)}
+                                        variant={"outlined"} 
+                                        style={{width: "100px", fontWeight: "600"}}>
+                                            COPY
+                                    </Button>
+                                </div>
+                                <button onClick={() => pay(balance._id, balance.totBalance)}>APPROVE</button>
+                            </div>
+                        ))
+                    )
+                    )
                 }
             </div>
         </div>
