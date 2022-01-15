@@ -1,3 +1,4 @@
+import { Button } from '@mui/material'
 import React, {useEffect, useState} from 'react'
 import { ClipLoader } from 'react-spinners'
 import axiosInstance from '../../../axios'
@@ -65,9 +66,13 @@ export default function Transactions() {
                             <div className={classes.transacts}>
                                 <div>
                                     <span>{transact.userId.username}</span>
-                                    <strong>{transact.amount}</strong>
-                                    <span>W. address: <strong>{transact.userId.walletAddress}</strong></span>
-                                    <button>COPY</button>
+                                    <strong>{new Intl.NumberFormat().format(transact.amount)} $</strong>
+                                    <span>Wallet address: <strong>{transact.userId.walletAddress}</strong></span>
+                                    <Button 
+                                        variant={"outlined"} 
+                                        style={{width: "100px", fontWeight: "600"}}>
+                                            COPY
+                                    </Button>
                                 </div>
                                 <button>APPROVE</button>
                             </div>
