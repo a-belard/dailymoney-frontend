@@ -40,7 +40,6 @@ export default function InvestModal(props) {
     e.preventDefault()
     submitBtn.current.disabled = true
     setissubmitting("submitting")
-    console.log(props.id)
     await axios.post("/transactions", {
         userId: props.id, type: "deposit", amount
     })
