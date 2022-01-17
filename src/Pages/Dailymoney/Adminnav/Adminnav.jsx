@@ -19,6 +19,7 @@ export default function Admin({active, changePage}) {
         {name: "Summary", icon: "fa fa-bars", active: "dashboard"},
         {name: "Pending", icon: "fa fa-business-time", active: "invite"},
         {name: "Notif.", icon: "fa fa-bell", active: "notifications"},
+        {name: "Ref. Bal.", icon: "fa fa-star", active: "refbal"},
         {name: "Users", icon: "fa fa-users", active: "users"},      
     ]
     return (
