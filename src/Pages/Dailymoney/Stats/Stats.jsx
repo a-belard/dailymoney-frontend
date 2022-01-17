@@ -17,20 +17,17 @@ export default function Stats(props) {
                 unit: "$",
                 active: "withdrawals",
                 className: classes.withdrew,
-                desc: <p>Accumulated amount  + 10% from referrals first investments</p>
             },
             {
                 name: "Total investment",
                 unit: "$",
                 active: "investments",
                 className: classes.investment,
-                desc: <p>Investment from the start</p>
             },
             {
                 name: "Total users",
                 unit: "People",
-                desc: "",
-                className: classes.referrals
+S                className: classes.referrals
             }
         ]
     )
