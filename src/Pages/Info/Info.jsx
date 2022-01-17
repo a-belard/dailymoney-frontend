@@ -36,7 +36,21 @@ export default function Info() {
                 <img src={Image} alt="" />
             </div>
             <div>
-                <p>Dailymoney is a web application that earns you money everyday
+                <p>Daily money provider started in 2015 with the aim of 
+                    promoting cryptocurrency coins. By the beginning 
+                    of 2022, New contract between Daily money provider 
+                    and Tron company was signed by the purpose of 
+                    increasing the value of Tron. It's always good 
+                    to diversify one's crypto investment portfolio 
+                    with cryptocurrencies having a daily growing market cap. 
+                    TRON is among such reliable cryptocurrencies that has an 
+                    investment appeal especially for those looking for inexpensive 
+                    trading options in the crypto market. TRON is basically a 
+                    blockchain-based decentralized digital platform having its own 
+                    cryptocurrency, Tronix (TRX) . It was developed by Justin Sun in 2017. 
+                    The platform mainly hosts entertainment applications and facilitates 
+                    cost-effective sharing of digital content. The platform grew rather fast, 
+                    reaching 50 million user accounts by August 2021 and gained a global outreach.
                     <br />
                     <br />
                     <ul>
