@@ -56,7 +56,7 @@ export default function Stats(props) {
                         unit: "People",
                         desc: "",
                         active: "users",
-                        className: classes.usersx
+                        className: classes.users
                     }
                 ]
                 let stats = await axiosInstance.get("/stats")
@@ -165,7 +165,7 @@ export default function Stats(props) {
                                                 withdrawals.map((withdrawal, i) => (
                                                     <tr key={i}>
                                                         <td>{format(new Date(withdrawal.createdAt), "HH:MM dd, L yyyy")}</td>
-                                                        <td>{withdrawal.userId.username}</td>
+                                                        <td>{withdrawal.userId?.username || "Deleted"}</td>
                                                         <td>$ {new Intl.NumberFormat().format(withdrawal.amount)}</td>
                                                     </tr>
                                                 ))
@@ -218,7 +218,7 @@ export default function Stats(props) {
                                                 .map((investment, i) => (
                                                     <tr key={i}>
                                                         <td>{format(new Date(investment.updatedAt), "HH:MM dd, L yyyy")}</td>
-                                                        <td>{investment.userId.username}</td>
+                                                        <td>{investment.userId?.username || "⚠️Deleted"}</td>
                                                         <td>$ {new Intl.NumberFormat().format(investment.amount)}</td>
                                                     </tr>
                                                 ))
