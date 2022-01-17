@@ -15,7 +15,6 @@ export default function Users() {
             setusers(data.data)
             setusersCopy(data.data)
             setisloading(false)
-            console.log(users)
         }
         getUsers()
     },[])
