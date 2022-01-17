@@ -15,6 +15,7 @@ export default function Users() {
             setusers(data.data)
             setusersCopy(data.data)
             setisloading(false)
+            console.log(users)
         }
         getUsers()
     },[])
@@ -134,7 +135,7 @@ export default function Users() {
                         </tr>
                         <tr>
                             <td>Registered on</td>
-                            {users.map((user, i) => <td key={i}>{format(new Date(user.createdAt), "HH:MM dd, L yyyy")}</td>)}
+                            {users.map((user, i) => <td key={i}>{format(new Date(user.createdAt), "HH:mm dd, L yyyy")}</td>)}
                         </tr>
                         <tr>
                             <td>Email</td>
