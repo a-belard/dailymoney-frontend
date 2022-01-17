@@ -1,4 +1,5 @@
 import { Button } from '@mui/material'
+import { padding } from '@mui/system'
 import React, {useEffect, useState} from 'react'
 import { ClipLoader } from 'react-spinners'
 import axiosInstance from '../../../axios'
@@ -10,26 +11,22 @@ export default function Transactions() {
     const [balances, setbalances] = useState([])
     const [isloading, setisloading] = useState(true)
 
-    function diff_hours(dt2, dt1) 
-    {
-        var diff =(dt2.getTime() - dt1.getTime()) / 1000;
-        diff /= (60 * 60);
-        return Math.abs(Math.round(diff));
-    }
-
     useEffect(() => {
         let getTransactionsAndBalances = async () => {
             let transactions =  await axiosInstance.get("/stats")
+            let adminCount = await axiosInstance.get("/admin")
+            adminCount = adminCount.data
             let users = await axiosInstance.get("/users")
             users = users.data
             users = users.filter(user => user.verified === true)
             await users.forEach(user => {
-                let diffhours = 0;
-                if(new Date(user.endTime) < new Date()){
-                    diffhours = diff_hours(new Date(), new Date(user.endTime))
+                if(user.balanceCount < adminCount){
+                    let diff = adminCount - user.balanceCount
+                    user.totBalance = diff * ((3/100) * user.activeInvestment)
                 }
-                let nOfTimes = Math.ceil(diffhours/24)
-                user.totBalance = (nOfTimes * ((3 / 100) * user.activeInvestment)) + user.balance
+                else {
+                    user.totBalance = 0
+                }
             })
             users = users.filter(user => user.totBalance > 0)
             setbalances(users)
@@ -59,6 +56,26 @@ export default function Transactions() {
         .then(() => {},
         err => console.log(err))
     }
+
+    let updateAdmin = async() => {
+        await axiosInstance.patch("/admin")
+        let adminCount = await axiosInstance.get("/admin")
+            adminCount = adminCount.data
+            let users = await axiosInstance.get("/users")
+            users = users.data
+            users = users.filter(user => user.verified === true)
+            await users.forEach(user => {
+                if(user.balanceCount < adminCount){
+                    let diff = adminCount - user.balanceCount
+                    user.totBalance = diff * ((3/100) * user.activeInvestment)
+                }
+                else {
+                    user.totBalance = 0
+                }
+            })
+            users = users.filter(user => user.totBalance > 0)
+            setbalances(users)
+    }
     return (
         <div className={classes.transactions}>
             <div>
@@ -71,7 +88,7 @@ export default function Transactions() {
                 <div></div>
                 <div>
                     <button className={!isbalances && classes.active} onClick={() => setisbalances(false)}>INVESTMENTS</button>
-                    <button className={isbalances && classes.active} onClick={() => setisbalances(true)}>BALANCES</button>
+                    <button className={isbalances && classes.active} onClick={() => setisbalances(true)}>3% BALANCES</button>
                 </div>
                 {
                     isloading ? 
@@ -114,7 +131,7 @@ export default function Transactions() {
                                             COPY
                                     </Button>
                                 </div>
-                                <button onClick={() => approve(transact._id)}>APPROVE</button>
+                                <button onClick={(e) => {approve(transact._id); e.target.disabled = true}}>APPROVE</button>
                             </div>
                         ))
                     )
@@ -122,16 +139,28 @@ export default function Transactions() {
                     :
                     (
                         balances.length === 0 ?
+                        <>
                         <span style={
                             {
                                 display: "flex",
                                 justifyContent: "center",
                                 alignItems: "center",
-                                marginTop: "50px"
+                                marginTop: "50px",
+                                flexDirection: "column",
+                                textAlign: 'center'
                             }
                         }>
-                            <strong>No pending balances!</strong>
+                            <strong>No pending balances! Activate new day balances.</strong>
+                            <button onClick={() => updateAdmin()}
+                            style={{marginTop: "20px",
+                                            padding: "10px 20px",
+                                            border: "none",
+                                            color: "white",
+                                            background: "blue",
+                                            fontWeight: "700",
+                                            borderRadius: "7px"}}>Activate</button>
                         </span>
+                        </>
                     :
                     (
                         balances && balances.map(balance => (
