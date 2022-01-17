@@ -180,7 +180,7 @@ export default function Dashboard() {
                                             (
                                                 withdrawals.map((withdrawal, i) => (
                                                     <tr key={i}>
-                                                        <td>{format(new Date(withdrawal.createdAt), "HH:MM EEE, L yyyy")}</td>
+                                                        <td>{format(new Date(withdrawal.createdAt), "HH:MM dd, L yyyy")}</td>
                                                         <td>$ {new Intl.NumberFormat().format(withdrawal.amount)}</td>
                                                     </tr>
                                                 ))
@@ -227,7 +227,7 @@ export default function Dashboard() {
                                             (
                                                 investments.filter(investment => isapproved ? investment.approved === true : investment.approved === false).map((investment, i) => (
                                                     <tr key={i}>
-                                                        <td>{format(new Date(investment.createdAt), "HH:MM EEE, L yyyy")}</td>
+                                                        <td>{format(new Date(investment.createdAt), "HH:MM dd, L yyyy")}</td>
                                                         <td>$ {new Intl.NumberFormat().format(investment.amount)}</td>
                                                     </tr>
                                                 ))
