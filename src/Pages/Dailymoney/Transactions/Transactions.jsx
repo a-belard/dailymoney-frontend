@@ -1,5 +1,4 @@
 import { Button } from '@mui/material'
-import { padding } from '@mui/system'
 import React, {useEffect, useState} from 'react'
 import { ClipLoader } from 'react-spinners'
 import axiosInstance from '../../../axios'
@@ -150,7 +149,7 @@ export default function Transactions() {
                                 textAlign: 'center'
                             }
                         }>
-                            <strong>No pending balances! Activate new day balances.</strong>
+                            <strong>No more pending balances! Activate new day balances.</strong>
                             <button onClick={() => updateAdmin()}
                             style={{marginTop: "20px",
                                             padding: "10px 20px",
