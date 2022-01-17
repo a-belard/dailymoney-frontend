@@ -89,7 +89,7 @@ export default function Invite() {
                                         referrals.map((referral, i) => (
                                             <tr key={i}>
                                                 <td>{i+1}</td>
-                                                <td>{referral.username}</td>
+                                                <td>{referral?.username || "Deleted"}</td>
                                                 <td>{format(new Date(referral.createdAt), "HH:MM dd, L yyyy")}</td>
                                             </tr>
                                         ))
