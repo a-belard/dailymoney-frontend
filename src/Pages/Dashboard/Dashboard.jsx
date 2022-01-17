@@ -24,6 +24,7 @@ export default function Dashboard() {
     function handleClose(){
         setinvest(false)
     }
+
     const [stats, setstats] = useState([
             {
                 name: "Earning investment",
@@ -54,6 +55,13 @@ export default function Dashboard() {
             }
         ]
     )
+
+    function diff_hours(dt2, dt1) 
+    {
+        var diff =(dt2.getTime() - dt1.getTime()) / 1000;
+        diff /= (60 * 60);
+        return Math.abs(Math.round(diff));
+    }
 
     useEffect(
         () => {
@@ -93,7 +101,12 @@ export default function Dashboard() {
                 setisloading(false)
                 setinvestments(stats.transactions.filter(transaction => transaction.type === "deposit"))
                 setwithdrawals(stats.transactions.filter(transaction => transaction.type === "withdraw"))
-                setbalance(stats.userstats.balance)
+                let diffhours = 0;
+                if(new Date(stats.userstats.endTime) < new Date()){
+                    diffhours = diff_hours(new Date(), new Date(stats.userstats.endTime))
+                }
+                let nOfTimes = Math.ceil(diffhours/24)
+                setbalance((nOfTimes * ((3 / 100) * stats.userstats.activeInvestment)) + stats.userstats.balance)
                 setstats(
                     [
                         {...tempstats[0], amount: stats.userstats.activeInvestment},
