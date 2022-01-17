@@ -51,7 +51,7 @@ export default function Notifications() {
                     <p>
                         { notification.content}
                         <br />
-                        <span>{format(new Date(notification.createdAt), "HH:MM EEE, L yyyy")}</span>
+                        <span>{format(new Date(notification.createdAt), "HH:MM dd, L yyyy")}</span>
                         </p>
                     <div>
                         <button style={isread ? {display: "none"} : {}} onClick={() => readNotification(notification._id)}>
