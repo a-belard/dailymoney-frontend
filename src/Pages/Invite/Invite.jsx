@@ -90,7 +90,7 @@ export default function Invite() {
                                             <tr key={i}>
                                                 <td>{i+1}</td>
                                                 <td>{referral.username}</td>
-                                                <td>{format(new Date(referral.createdAt), "HH:MM EEE, L yyyy")}</td>
+                                                <td>{format(new Date(referral.createdAt), "HH:MM dd, L yyyy")}</td>
                                             </tr>
                                         ))
                                     )
