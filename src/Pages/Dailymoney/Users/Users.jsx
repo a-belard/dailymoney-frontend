@@ -19,6 +19,14 @@ export default function Users() {
         getUsers()
     },[])
 
+    let deleteUser = async (id) => {
+        let usersCopy = users.filter(user => user._id !== id)
+        setusers(usersCopy)
+        await axiosInstance.delete("/user/" + id)
+        .then(() => {},
+        err => console.log(err.response))
+    }
+
     function search(username){
         let allusers = usersCopy.filter(user => user.username.indexOf(username) !== -1);
         if(username !== ""){
@@ -147,6 +155,18 @@ export default function Users() {
                         <tr>
                             <td>Wallet address</td>
                             {users.map((user, i) => <td key={i}>{user.walletAddress}</td>)}
+                        </tr>
+                        <tr>
+                            <td>Investment</td>
+                            {users.map((user, i) => <td key={i}>{user.totDeposited}</td>)}
+                        </tr>
+                        <tr>
+                            <td>Earned</td>
+                            {users.map((user, i) => <td key={i}>{user.totWithdrew}</td>)}
+                        </tr>
+                        <tr>
+                            <td>Delete account</td>
+                            {users.map((user, i) => <td key={i} onClick={() => deleteUser(user._id)}><button>DELETE</button></td>)}
                         </tr>
                     </tbody>
                 </table> 
