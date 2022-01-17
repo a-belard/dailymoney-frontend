@@ -27,7 +27,7 @@ export default function Stats(props) {
             {
                 name: "Total users",
                 unit: "People",
-S                className: classes.referrals
+                className: classes.referrals
             }
         ]
     )
