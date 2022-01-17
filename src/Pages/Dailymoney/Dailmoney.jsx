@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import Adminnav from './Adminnav/Adminnav'
 import classes from './Dailymoney.module.scss'
 import Notifications from './Notifications/Notifications'
+import RefBal from './RefBal/RefBal'
 import Stats from './Stats/Stats'
 import Transactions from './Transactions/Transactions'
 import Users from './Users/Users'
@@ -58,9 +59,14 @@ export default function Dailmoney() {
                                 <Notifications/>
                             )
                     :
+                    activepage === "users" ?
                             (
                                 <Users/>
                             )
+                    :
+                     (
+                         <RefBal/>
+                     )
                 }
                 <Adminnav active={activepage} changePage={page => setactivepage(page)}/>
             </div>
