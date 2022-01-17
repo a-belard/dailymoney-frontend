@@ -126,7 +126,7 @@ export default function Users() {
                         </tr>
                         <tr>
                             <td>Registered on</td>
-                            {users.map((user, i) => <td key={i}>{format(new Date(user.createdAt), "HH:MM EEE, L yyyy")}</td>)}
+                            {users.map((user, i) => <td key={i}>{format(new Date(user.createdAt), "HH:MM dd, L yyyy")}</td>)}
                         </tr>
                         <tr>
                             <td>Email</td>
