@@ -13,7 +13,6 @@ export default function RefBal() {
         let getBalances = async () => {
             let balances = await axiosInstance.get("users")
             balances = balances.data
-            console.log(balances)
             balances = balances.filter(user => user.verified === true)
             balances = balances.filter(user => user.balance !== 0)
             setbalances(balances)
