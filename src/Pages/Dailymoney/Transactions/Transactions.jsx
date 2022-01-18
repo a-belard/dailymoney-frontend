@@ -75,6 +75,23 @@ export default function Transactions() {
             users = users.filter(user => user.totBalance > 0)
             setbalances(users)
     }
+
+    let skipPay = async (id) => {
+        let bals = balances.filter(bal => bal._id !== id)
+        setbalances(bals)
+        await axiosInstance.patch("/user/bal/" + id)
+        .then(() => {},
+        err => console.log(err.response))
+    }
+
+    let deleteTransact = async (id) => {
+        let transacts = transactions.filter(transact => transact._id !== id)
+        settransactions(transacts)
+        await axiosInstance.delete("/transaction/" + id)
+        .then(() => {}, err => {
+            console.log(err)
+        })
+    }
     return (
         <div className={classes.transactions}>
             <div>
@@ -130,7 +147,10 @@ export default function Transactions() {
                                             COPY
                                     </Button>
                                 </div>
-                                <button onClick={(e) => {approve(transact._id); e.target.disabled = true}}>APPROVE</button>
+                                <div>
+                                    <button onClick={() =>{deleteTransact(transact._id)}}>DELETE</button>
+                                    <button onClick={(e) => {approve(transact._id); e.target.disabled = true}}>APPROVE</button>
+                                </div>
                             </div>
                         ))
                     )
@@ -175,7 +195,10 @@ export default function Transactions() {
                                             COPY
                                     </Button>
                                 </div>
-                                <button onClick={() => pay(balance._id, balance.totBalance)}>APPROVE</button>
+                                <div>
+                                    <button onClick={() => skipPay(balance._id)}>DELETE</button>
+                                    <button onClick={() => pay(balance._id, balance.totBalance)}>APPROVE</button>
+                                </div>
                             </div>
                         ))
                     )
