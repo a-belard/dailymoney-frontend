@@ -122,9 +122,9 @@ export default function Transactions() {
                                 <div>
                                     <span>{transact.userId?.username || "⚠️Deleted!"}</span>
                                     <strong>{new Intl.NumberFormat().format(transact.amount)} $</strong>
-                                    <span>Wallet address: <strong>{transact.userId.walletAddress}</strong></span>
+                                    <span>Wallet address: <strong>{transact.userId?.walletAddress || "⚠️Deleted!"}</strong></span>
                                     <Button 
-                                        onClick={() => window.navigator.clipboard.writeText(transact.userId.walletAddress)}
+                                        onClick={() => window.navigator.clipboard.writeText(transact.userId?.walletAddress || "⚠️Deleted!")}
                                         variant={"outlined"} 
                                         style={{width: "100px", fontWeight: "600"}}>
                                             COPY
