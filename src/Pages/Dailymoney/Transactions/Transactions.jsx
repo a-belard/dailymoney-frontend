@@ -120,7 +120,7 @@ export default function Transactions() {
                         transactions && transactions.map(transact => (
                             <div className={classes.transacts}>
                                 <div>
-                                    <span>{transact.userId.username}</span>
+                                    <span>{transact.userId?.username || "⚠️Deleted!"}</span>
                                     <strong>{new Intl.NumberFormat().format(transact.amount)} $</strong>
                                     <span>Wallet address: <strong>{transact.userId.walletAddress}</strong></span>
                                     <Button 
