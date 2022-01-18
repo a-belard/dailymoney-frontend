@@ -26,7 +26,7 @@ export default function RefBal() {
         let transact = {userId, amount, type:"withdraw"}
         let bals = balances.filter(bal => bal._id !== userId)
         setbalances(bals)
-        await axiosInstance.post("/transactions",transact)
+        await axiosInstance.post("/transaction/balance",transact)
         .then(() => {},
         err => console.log(err))
     }
