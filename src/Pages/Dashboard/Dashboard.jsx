@@ -56,13 +56,6 @@ export default function Dashboard() {
         ]
     )
 
-    function diff_hours(dt2, dt1) 
-    {
-        var diff =(dt2.getTime() - dt1.getTime()) / 1000;
-        diff /= (60 * 60);
-        return Math.abs(Math.round(diff));
-    }
-
     useEffect(
         () => {
             let getstats = async () => {
@@ -97,22 +90,18 @@ export default function Dashboard() {
                     }
                 ]
                 let stats = await axios.get("/stats/" + decoded._id)
+                let referrals = await axios.get("/referrals/" + decoded._id)
                 stats = stats.data
                 setisloading(false)
                 setinvestments(stats.transactions.filter(transaction => transaction.type === "deposit"))
                 setwithdrawals(stats.transactions.filter(transaction => transaction.type === "withdraw"))
-                let diffhours = 0;
-                if(new Date(stats.userstats.endTime) < new Date()){
-                    diffhours = diff_hours(new Date(), new Date(stats.userstats.endTime))
-                }
-                let nOfTimes = Math.ceil(diffhours/24)
-                setbalance((nOfTimes * ((3 / 100) * stats.userstats.activeInvestment)) + stats.userstats.balance)
+                setbalance(stats.userstats.balance)
                 setstats(
                     [
                         {...tempstats[0], amount: stats.userstats.activeInvestment},
                         {...tempstats[1], amount: stats.userstats.totWithdrew},
                         {...tempstats[2], amount: stats.userstats.totDeposited},
-                        {...tempstats[3], amount: stats.userstats.referrals.length}
+                        {...tempstats[3], amount: referrals.data.length}
                     ]
                 )
             }
