@@ -54,7 +54,7 @@
             border-radius: 7px;
             align-items: flex-end;
 
-            >div {
+            >div:first-of-type {
                 display: flex;
                 flex-direction: column;
                 width: 70%;
@@ -80,15 +80,22 @@
                 // }
             }
 
-            >button {
-                padding: 5px 15px;
-                height: 50px;
-                font-weight: 700;
-                border: none;
-                color: white;
-                background-color: rgb(2, 95, 189);
-                font-weight: .85em;
-                border-radius: 10px;
+            >div:last-of-type{
+                >button {
+                    padding: 5px 15px;
+                    height: 50px;
+                    font-weight: 700;
+                    border: none;
+                    color: white;
+                    background-color: rgb(2, 95, 189);
+                    font-weight: .85em;
+                    border-radius: 10px;
+
+                    &:first-of-type {
+                        margin-bottom: 10px;
+                        background-color: rgb(218, 3, 3);
+                    }
+                }
             }
         }
     }
